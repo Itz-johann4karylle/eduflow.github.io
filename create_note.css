@@ -1,0 +1,356 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background: white;
+}
+
+/* Menu Items */
+.menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Sidebar Links */
+.menu a {
+    display: flex;
+    align-items: center; /* Align icon and text in a row */
+    justify-content: center; /* Center content */
+    padding: 20px;
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Icon Styling */
+.menu a i {
+    font-size: 20px;
+    margin-right: 0px; /* Default: no space in collapsed mode */
+    transition: margin 0.3s ease-in-out;
+}
+
+.menu a.logout {
+    margin-top: 160px; /* Push logout to the bottom */
+}
+
+/* Default Menu Icon */
+.menu-icon {
+    color: #4a90e2;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    top: 15px;
+    margin-top: 0px; /* Pushes the menu icon below the navbar */
+    margin-bottom: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Hover Effect */
+.menu-icon:hover {
+    color: white; /* Change color to white */
+    background: #4a90e2; /* Background turns blue */
+    border-radius: 8px; /* Optional rounded effect */
+    padding: 5px; /* Add spacing to make the hover effect visible */
+}
+
+/* Default: Hide menu text */
+.menu-text {
+    display: none; /* Hide text by default */
+    font-size: 16px;
+    color: #4a90e2;
+    transition: opacity 0.3s ease-in-out;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Sidebar Menu */
+.sidebar {
+    width: 70px;
+    height: calc(100vh - 50px); /* Adjust to not overlap navbar */
+    background-color: #bdfdf2;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s ease-in-out, background-color 0.5s ease-in-out;
+    padding-top: 40px;
+    z-index: 1000;
+    box-shadow: none;
+    border-right: none;
+}
+
+.sidebar.hidden {
+    background-color: rgba(189, 253, 242, 0.5);
+}
+
+.sidebar.expanded {
+    width: 250px; /* Expanded width */
+}
+
+/* Sidebar Expanded: Adjust text and icon */
+.sidebar.expanded .menu a {
+    justify-content: flex-start; /* Align to left when expanded */
+    padding-left: 20px;
+}
+
+.sidebar.expanded .menu a i {
+    margin-right: 10px; /* Give space between icon and text */
+}
+
+/* Show menu text when sidebar expands */
+.sidebar.expanded .menu-text {
+    display: inline-block;
+    opacity: 1;
+    margin-left: 10px;
+}
+
+.sidebar.expanded .menu-icon {
+    left: 10px; /* Moves to left */
+    transform: translateX(0); /* Resets transform */
+    top: 10px;
+}
+
+.sidebar.expanded .dropdown-icon {
+    display: inline-block;
+}
+
+/* Ensure even spacing between sidebar icons */
+.sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 100px; /* Space between icons */
+    margin-top: 50px; /* Push icons below the menu icon */
+    margin-bottom: 50px;
+    transition: margin 0.3s ease-in-out;
+}
+
+/* Adjust spacing between individual icons */
+.sidebar-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 50px; /* Ensure consistent height */
+    padding: 20px 0; /* Add vertical padding */
+    margin: 100px 0; /* Adjust spacing between icons */
+}
+
+.sidebar-icons a i {
+    font-size: 22px; /* Adjust icon size */
+    width: 30px; /* Set a fixed width */
+    height: 30px; /* Set a fixed height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hover Effect */
+.sidebar a:hover {
+    background: #4a90e2;
+    color: white;
+    border-radius: 5px;
+}
+
+.sidebar a:hover i {
+    color: white;
+}
+
+/* Sidebar Hover Effect */
+.sidebar a:hover .menu-text {
+    color: white; /* Change text color on hover */
+}
+
+/* Logout Icon Positioned at Bottom */
+.sidebar .logout {
+    margin-top: auto; /* Pushes it to the bottom */
+    padding-top: 20px; /* Adds spacing above it */
+}
+
+.dropdown {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Hide Dropdown Items by Default */
+.dropdown-menu {
+    display: none;
+    flex-direction: column;
+    padding-left: 30px;
+    margin-left: 15px;
+}
+
+.dropdown-menu.show {
+    display: flex;
+}
+
+/* Show Dropdown When Active */
+.dropdown.active .dropdown-menu {
+    display: flex;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Adjust height */
+    background: #bdfdf2; /* Apply this color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000; /* Ensures it stays above other elements */
+    box-shadow: none; /* Remove any shadow */
+    border-bottom: none; /* No line separating navbar & sidebar */
+}
+
+/* Adjust content below to avoid overlap */
+.dashboard-content {
+    margin-left: 90px; /* Push content to the right of sidebar */
+    margin-top: 80px; /* Push content down */
+    padding: 20px;
+}
+
+/* Left Section (Logo) */
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Right Section (Time, Date, Profile Picture) */
+.nav-right {
+    display: flex;
+    margin-right: 40px;
+    align-items: center;
+    gap: 20px; /* Adds spacing between elements */
+}
+
+/* Time and Date Styling */
+#current-time, #current-date {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Profile Picture */
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Placeholder for the EduFlow Logo */
+.logo-placeholder {
+    width: 50px !important; /* Adjust as needed */
+    height: auto !important;
+}
+
+.note-container {
+    display: flex;
+    justify-content: space-between; /* Pushes notes-content and window to opposite sides */
+    align-items: flex-start; /* Aligns everything at the top */
+    gap: 40px; /* Adds spacing between left and right sections */
+    padding: 20px;
+    width: 100%;
+}
+
+h1 {
+    color: #004d40;
+    font-size: 45px;
+}
+
+.note-form {
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.color-box {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: none;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 150px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 105px;
+}
+
+.cancel-btn {
+    background-color: gray;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background-color: #555;
+}
+
+.save-btn:hover {
+    background-color: #0056b3;
+}
